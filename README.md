@@ -1,4 +1,4 @@
-# LinkedOut Bot
+# LinkedBot
 
 Automagically publish your GitHub activity to LinkedIn.
 
@@ -12,10 +12,7 @@ Copy the `env.local.example` file in this directory to `.env.local` (which will 
 cp .env.local.example .env.local
 ```
 
-Set each variable on `.env.local`:
-
-- `MONGODB_URI` - Your MongoDB connection string. If you are using [MongoDB Atlas](https://mongodb.com/atlas) you can find this by clicking the "Connect" button for your cluster.
-- `MONGODB_DB` - The name of the MongoDB database you want to use.
+Set each variable in `.env.local`.
 
 ### Run Next.js in development mode
 
