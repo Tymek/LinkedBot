@@ -1,5 +1,5 @@
 module.exports = {
-  extends: '@esvelo',
+  extends: ['@esvelo', 'plugin:@next/next/recommended'],
   root: true,
   overrides: [
     {
