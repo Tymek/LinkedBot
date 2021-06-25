@@ -140,7 +140,7 @@ const PrivacyPolicy: FC = () => {
         <h3>Usage Data</h3>
         <p>Usage Data is collected automatically when using the Service.</p>
         <p>
-          Usage Data may include information such as Your Device's Internet
+          Usage Data may include information such as Your Device&apos;s Internet
           Protocol address (e.g. IP address), browser type, browser version, the
           pages of our Service that You visit, the time and date of Your visit,
           the time spent on those pages, unique device identifiers and other
@@ -171,17 +171,17 @@ const PrivacyPolicy: FC = () => {
         <p>
           If You decide to register through or otherwise grant us access to a
           Third-Party Social Media Service, We may collect Personal data that is
-          already associated with Your Third-Party Social Media Service's
+          already associated with Your Third-Party Social Media Service&apos;s
           account, such as Your name, Your email address, Your activities or
           Your contact list associated with that account.
         </p>
         <p>
           You may also have the option of sharing additional information with
-          the Company through Your Third-Party Social Media Service's account.
-          If You choose to provide such information and Personal Data, during
-          registration or otherwise, You are giving the Company permission to
-          use, share, and store it in a manner consistent with this Privacy
-          Policy.
+          the Company through Your Third-Party Social Media Service&apos;s
+          account. If You choose to provide such information and Personal Data,
+          during registration or otherwise, You are giving the Company
+          permission to use, share, and store it in a manner consistent with
+          this Privacy Policy.
         </p>
         <h3>Tracking Technologies and Cookies</h3>
         <p>
@@ -210,7 +210,7 @@ const PrivacyPolicy: FC = () => {
             disabling, or deleting local shared objects?&quot; available at
             <a
               href="https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_"
-              rel="external nofollow noopener"
+              rel="external nofollow noopener noreferrer"
               target="_blank">
               https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_
             </a>
@@ -232,7 +232,8 @@ const PrivacyPolicy: FC = () => {
           close Your web browser. Learn more about cookies:
           <a
             href="https://www.privacypolicies.com/blog/cookies/"
-            target="_blank">
+            target="_blank"
+            rel="noreferrer">
             What Are Cookies?
           </a>
           .
@@ -317,11 +318,11 @@ const PrivacyPolicy: FC = () => {
             <p>
               <strong>To contact You:</strong> To contact You by email,
               telephone calls, SMS, or other equivalent forms of electronic
-              communication, such as a mobile application's push notifications
-              regarding updates or informative communications related to the
-              functionalities, products or contracted services, including the
-              security updates, when necessary or reasonable for their
-              implementation.
+              communication, such as a mobile application&apos;s push
+              notifications regarding updates or informative communications
+              related to the functionalities, products or contracted services,
+              including the security updates, when necessary or reasonable for
+              their implementation.
             </p>
           </li>
           <li>
@@ -415,12 +416,12 @@ const PrivacyPolicy: FC = () => {
         <h2>Transfer of Your Personal Data</h2>
         <p>
           Your information, including Personal Data, is processed at the
-          Company's operating offices and in any other places where the parties
-          involved in the processing are located. It means that this information
-          may be transferred to — and maintained on — computers located outside
-          of Your state, province, country or other governmental jurisdiction
-          where the data protection laws may differ than those from Your
-          jurisdiction.
+          Company&apos;s operating offices and in any other places where the
+          parties involved in the processing are located. It means that this
+          information may be transferred to — and maintained on — computers
+          located outside of Your state, province, country or other governmental
+          jurisdiction where the data protection laws may differ than those from
+          Your jurisdiction.
         </p>
         <p>
           Your consent to this Privacy Policy followed by Your submission of
@@ -472,7 +473,7 @@ const PrivacyPolicy: FC = () => {
           acceptable means to protect Your Personal Data, We cannot guarantee
           its absolute security.
         </p>
-        <h1>Children's Privacy</h1>
+        <h1>Children&apos;s Privacy</h1>
         <p>
           Our Service does not address anyone under the age of 13. We do not
           knowingly collect personally identifiable information from anyone
@@ -485,15 +486,15 @@ const PrivacyPolicy: FC = () => {
         <p>
           If We need to rely on consent as a legal basis for processing Your
           information and Your country requires consent from a parent, We may
-          require Your parent's consent before We collect and use that
+          require Your parent&apos;s consent before We collect and use that
           information.
         </p>
         <h1>Links to Other Websites</h1>
         <p>
           Our Service may contain links to other websites that are not operated
           by Us. If You click on a third party link, You will be directed to
-          that third party's site. We strongly advise You to review the Privacy
-          Policy of every site You visit.
+          that third party&apos;s site. We strongly advise You to review the
+          Privacy Policy of every site You visit.
         </p>
         <p>
           We have no control over and assume no responsibility for the content,
@@ -516,7 +517,8 @@ const PrivacyPolicy: FC = () => {
         </p>
         <h1>Contact Us</h1>
         <p>
-          If you have any questions about this Privacy Policy don't contact me.
+          If you have any questions about this Privacy Policy do not contact me.
+          Please create your own instance of this software.
         </p>
       </main>
     </div>

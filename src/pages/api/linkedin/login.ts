@@ -2,6 +2,7 @@ import passport from 'passport'
 import nextConnect from 'next-connect'
 import session from 'express-session'
 import { Strategy as LinkedInStrategy } from 'passport-linkedin-oauth2'
+
 import config from '../../../utils/config'
 
 const options = {
@@ -15,13 +16,13 @@ const options = {
 passport.use(
   new LinkedInStrategy(options, (accessToken, refreshToken, profile, done) => {
     process.nextTick(() => {
-      console.log({ profile })
+      // console.log({ profile })
       return done(null, profile)
     })
   }),
 )
 
-console.log({ options })
+// console.log({ options })
 
 export default nextConnect()
   .use(

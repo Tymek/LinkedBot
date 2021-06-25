@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import dynamic from 'next/dynamic'
+import A from 'next/link'
 import { GetServerSideProps } from 'next'
 
 import connectToDatabase from '../utils/mongodb'
@@ -18,14 +19,14 @@ const Home: FC<{ isConnected: boolean }> = ({ isConnected }) => {
         </p>
 
         <p uk-margin>
-          <button className="uk-button uk-button-secondary">
+          <button type="button" className="uk-button uk-button-secondary">
             Connect to GitHub
           </button>
-          <a href="/api/linkedin/login">
-            <button className="uk-button uk-button-primary">
+          <A href="/api/linkedin/login">
+            <button type="button" className="uk-button uk-button-primary">
               Connect to LinkedIn
             </button>
-          </a>
+          </A>
         </p>
 
         <h3 className="subtitle">
@@ -46,7 +47,7 @@ const Home: FC<{ isConnected: boolean }> = ({ isConnected }) => {
 
       <footer>
         <div className="uk-margin-small">
-          <a href="/privacy-policy">Privacy Policy</a>
+          <A href="/privacy-policy">Privacy Policy</A>
         </div>
         <div className="uk-margin-small">
           <a href="https://github.com/Tymek/LinkedOut">
