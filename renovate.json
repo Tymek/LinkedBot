@@ -1,0 +1,15 @@
+{
+  "extends": ["config:base"],
+  "bumpVersion": "patch",
+  "groupName": "all",
+  "packageRules": [
+    {
+      "updateTypes": ["minor", "patch", "pin", "digest"]
+    },
+    {
+      "depTypeList": ["devDependencies", "optionalDependencies"]
+    }
+  ],
+  "timezone": "Europe/Warsaw",
+  "schedule": ["before 9am on Saturday"]
+}
