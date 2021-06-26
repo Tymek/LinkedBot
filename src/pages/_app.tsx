@@ -14,7 +14,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <>
       <Head>
-        <title>LinkedOut Bot</title>
+        <title>LinkedBot</title>
       </Head>
       <Component {...pageProps} />
     </>

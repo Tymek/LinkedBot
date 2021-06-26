@@ -13,12 +13,8 @@ const Home: FC<{ isConnected: boolean }> = ({ isConnected }) => {
       <main className="uk-margin-top">
         <h1 className="title">LinkedBot</h1>
         <p>Automagically publish your GitHub activity to LinkedIn.</p>
-        <p className="uk-text-warning">
-          <span uk-icon="icon: warning; ratio: 1" /> Token TTL is 2 months. You
-          will need to re-authorize.
-        </p>
 
-        <p uk-margin>
+        <p className="uk-margin-small">
           <button type="button" className="uk-button uk-button-secondary">
             Connect to GitHub
           </button>
@@ -27,6 +23,11 @@ const Home: FC<{ isConnected: boolean }> = ({ isConnected }) => {
               Connect to LinkedIn
             </button>
           </A>
+        </p>
+
+        <p className="uk-text-warning">
+          <span uk-icon="icon: warning; ratio: 1" /> Token TTL is 2 months. You
+          will need to re-authorize.
         </p>
 
         <h3 className="subtitle">
@@ -69,11 +70,15 @@ const Home: FC<{ isConnected: boolean }> = ({ isConnected }) => {
 export default Home
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { client } = await connectToDatabase()
+  try {
+    const { client } = await connectToDatabase()
 
-  const isConnected = await client.isConnected()
+    const isConnected = await client.isConnected()
 
-  return {
-    props: { isConnected },
+    return {
+      props: { isConnected },
+    }
+  } catch {
+    return { props: {} }
   }
 }
