@@ -68,6 +68,7 @@ async function connectToDatabase(): Promise<{
   }
 
   cached.conn = await cached.promise
+
   return cached.conn
 }
 

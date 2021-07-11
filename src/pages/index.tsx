@@ -1,68 +1,99 @@
+/* eslint-disable @next/next/no-img-element */
 import { FC } from 'react'
-import dynamic from 'next/dynamic'
-import A from 'next/link'
 import { GetServerSideProps } from 'next'
-
-import connectToDatabase from '../utils/mongodb'
-
-const GitHubButton = dynamic(() => import('react-github-btn'), { ssr: false })
+import A from 'next/link'
+import connectToDatabase from 'utils/mongodb'
+import Icon from 'components/Icon'
+import Footer from 'components/Footer'
+import useUser from 'hooks/useUser'
 
 const Home: FC<{ isConnected: boolean }> = ({ isConnected }) => {
+  const { data: user } = useUser()
+  const linkedInName = user?.linkedIn?.displayName
+  const linkedInPhoto =
+    user?.linkedIn?.photos && user?.linkedIn?.photos.length
+      ? user?.linkedIn?.photos[0].value
+      : ''
+
   return (
     <div className="uk-container">
       <main className="uk-margin-top">
-        <h1 className="title">LinkedBot</h1>
+        {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
+        <h1 className="uk-heading-large">LinkedBot</h1>
         <p>Automagically publish your GitHub activity to LinkedIn.</p>
 
-        <p className="uk-margin-small">
-          <button type="button" className="uk-button uk-button-secondary">
-            Connect to GitHub
-          </button>
-          <A href="/api/linkedin/login">
-            <button type="button" className="uk-button uk-button-primary">
-              Connect to LinkedIn
+        <div className="uk-margin-large-bottom">
+          {linkedInName ? (
+            <div>
+              <div>
+                <h2 className="title">LinkedIn account</h2>
+                <div className="uk-flex">
+                  <div className="uk-margin-small-right">
+                    <img
+                      className="uk-border-circle"
+                      width={32}
+                      height={32}
+                      src={linkedInPhoto}
+                      alt="avatar"
+                    />
+                  </div>
+                  <div>
+                    {linkedInName}
+                    <br />
+                    <A href="/api/logout">
+                      <button
+                        type="button"
+                        className="uk-button uk-button-small uk-button-primary"
+                      >
+                        Logout
+                      </button>
+                    </A>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <A href="/api/linkedin/login">
+              <button type="button" className="uk-button uk-button-primary">
+                Connect to LinkedIn
+              </button>
+            </A>
+          )}
+        </div>
+        <div className="uk-margin">
+          <A href="/api/github/login">
+            <button
+              type="button"
+              className="uk-button uk-button-secondary"
+              disabled
+            >
+              Connect to GitHub
             </button>
           </A>
-        </p>
+        </div>
 
         <p className="uk-text-warning">
-          <span uk-icon="icon: warning; ratio: 1" /> Token TTL is 2 months. You
-          will need to re-authorize.
+          <Icon name="warning" ratio={1} /> Token TTL is 2 months. You will need
+          to re-authorize.
         </p>
 
         <h3 className="subtitle">
           Database status:{' '}
           {isConnected ? (
             <span className="uk-text-success">
-              <span uk-icon="icon: check; ratio: 2.5" />
+              <Icon name="check" ratio={2.5} />
               operational
             </span>
           ) : (
             <span className="uk-text-danger">
-              <span uk-icon="icon: close; ratio: 2.5" />
+              <Icon name="close" ratio={2.5} />
               inactive
             </span>
           )}
         </h3>
       </main>
 
-      <footer>
-        <div className="uk-margin-small">
-          <A href="/privacy-policy">Privacy Policy</A>
-        </div>
-        <div className="uk-margin-small">
-          <a href="https://github.com/Tymek/LinkedOut">
-            github.com/Tymek/LinkedOut
-          </a>
-        </div>
-        <GitHubButton
-          href="https://github.com/Tymek/LinkedOut"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Star Tymek/LinkedOut on GitHub">
-          Star
-        </GitHubButton>
-      </footer>
+      <Footer />
     </div>
   )
 }

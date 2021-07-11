@@ -14,6 +14,8 @@ cp .env.local.example .env.local
 
 Set each variable in `.env.local`.
 
+GitHub doesn't allow multiple callback URLs per application, so you will need one with it set to `http://localhost:3000/api/github/callback` for development.
+
 ### Run Next.js in development mode
 
 ```bash
