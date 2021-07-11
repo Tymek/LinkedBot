@@ -1,19 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import { FC } from 'react'
 import { GetServerSideProps } from 'next'
-import A from 'next/link'
 import connectToDatabase from 'utils/mongodb'
 import Icon from 'components/Icon'
 import Footer from 'components/Footer'
-import useUser from 'hooks/useUser'
+import { signIn, signOut, useSession } from 'next-auth/client'
 
 const Home: FC<{ isConnected: boolean }> = ({ isConnected }) => {
-  const { data: user } = useUser()
-  const linkedInName = user?.linkedIn?.displayName
-  const linkedInPhoto =
-    user?.linkedIn?.photos && user?.linkedIn?.photos.length
-      ? user?.linkedIn?.photos[0].value
-      : ''
+  const [session, loading] = useSession() // TODO: loading
 
   return (
     <div className="uk-container">
@@ -22,8 +16,9 @@ const Home: FC<{ isConnected: boolean }> = ({ isConnected }) => {
         <h1 className="uk-heading-large">LinkedBot</h1>
         <p>Automagically publish your GitHub activity to LinkedIn.</p>
 
+        {/* TODO: refactor into component? */}
         <div className="uk-margin-large-bottom">
-          {linkedInName ? (
+          {session ? (
             <div>
               <div>
                 <h2 className="title">LinkedIn account</h2>
@@ -33,43 +28,44 @@ const Home: FC<{ isConnected: boolean }> = ({ isConnected }) => {
                       className="uk-border-circle"
                       width={32}
                       height={32}
-                      src={linkedInPhoto}
+                      src={session.user.image}
                       alt="avatar"
                     />
                   </div>
                   <div>
-                    {linkedInName}
+                    {session.user.name}
                     <br />
-                    <A href="/api/logout">
-                      <button
-                        type="button"
-                        className="uk-button uk-button-small uk-button-primary"
-                      >
-                        Logout
-                      </button>
-                    </A>
+                    <button
+                      onClick={() => signOut()}
+                      type="button"
+                      className="uk-button uk-button-small uk-button-primary"
+                    >
+                      Logout
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           ) : (
-            <A href="/api/linkedin/login">
-              <button type="button" className="uk-button uk-button-primary">
-                Connect to LinkedIn
-              </button>
-            </A>
+            <button
+              onClick={() => signIn('linkedin')}
+              type="button"
+              className="uk-button uk-button-primary"
+            >
+              Connect to LinkedIn
+            </button>
           )}
         </div>
         <div className="uk-margin">
-          <A href="/api/github/login">
-            <button
-              type="button"
-              className="uk-button uk-button-secondary"
-              disabled
-            >
-              Connect to GitHub
-            </button>
-          </A>
+          <button
+            onClick={() => signIn('github')}
+            // TODO: state - am I logged in with both
+            type="button"
+            className="uk-button uk-button-secondary"
+            disabled={!session}
+          >
+            Connect to GitHub
+          </button>
         </div>
 
         <p className="uk-text-warning">
