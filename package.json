@@ -1,6 +1,6 @@
 {
   "name": "linked-bot",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -11,7 +11,7 @@
     "test": "prettier --check . && eslint --ext .js,.ts,.tsx,.json ."
   },
   "dependencies": {
-    "mongodb": "3.6.10",
+    "mongodb": "4.0.0",
     "next": "11.0.1",
     "next-auth": "^3.27.3",
     "react": "17.0.2",
