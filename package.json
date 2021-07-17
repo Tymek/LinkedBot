@@ -11,22 +11,22 @@
     "test": "prettier --check . && eslint --ext .js,.ts,.tsx,.json ."
   },
   "dependencies": {
-    "mongodb": "3.6.10",
+    "mongodb": "4.0.0",
     "next": "11.0.1",
-    "next-auth": "^3.27.3",
+    "next-auth": "3.27.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-github-btn": "1.2.0",
     "sass": "1.35.2",
-    "swr": "^0.5.6",
-    "uikit": "3.7.0"
+    "swr": "0.5.6",
+    "uikit": "3.7.1"
   },
   "devDependencies": {
     "@esvelo/eslint-config": "0.3.0",
-    "@types/node": "16.3.1",
+    "@types/node": "16.3.3",
     "@types/react": "17.0.14",
     "eslint": "7.30.0",
-    "eslint-config-next": "^11.0.1",
+    "eslint-config-next": "11.0.1",
     "jest": "27.0.6",
     "prettier": "2.3.2",
     "typescript": "4.3.5"
