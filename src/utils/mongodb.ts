@@ -27,7 +27,10 @@ let cached = (global as CustomGlobal).mongo
 
 async function connectToDatabase(): Promise<CustomGlobal['mongo']> {
   if (!cached) {
-    const client = new MongoClient(MONGODB_URI)
+    const client = new MongoClient(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
     await client.connect()
 
     cached = {

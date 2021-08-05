@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { ObjectId } from 'mongodb'
+
 export type Account = {
-  _id: string
+  _id: ObjectId
   compoundId: string
-  userId: string
+  userId: ObjectId
   providerType: string
   providerId: string
-  providerAccountId: number
+  providerAccountId: number | string
   refreshToken: string | null
   accessToken: string | null
   accessTokenExpires: string | null

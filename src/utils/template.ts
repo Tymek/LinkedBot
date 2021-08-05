@@ -4,7 +4,7 @@ It now has: 👁️ {{watchers}} watchers  ⭐ {{stars}} stars  and 🖇️ {{fo
 {{url}}
 
 Follow me on {{profile}}.
-[ posted with github.com/Tymek/LinkedBot ]
+<[ posted with github.com/Tymek/LinkedBot ]>
 `
 
 export default template
