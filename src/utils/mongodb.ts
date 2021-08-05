@@ -4,27 +4,17 @@ const { MONGODB_URI } = process.env
 const { MONGODB_DB } = process.env
 
 if (!MONGODB_URI) {
-  throw new Error(
-    'Please define the MONGODB_URI environment variable inside .env.local',
-  )
+  throw new Error('Please define the MONGODB_URI environment variable')
 }
 
 if (!MONGODB_DB) {
-  throw new Error(
-    'Please define the MONGODB_DB environment variable inside .env.local',
-  )
+  throw new Error('Please define the MONGODB_DB environment variable')
 }
 
 type CustomGlobal = typeof global & {
-  mongo: {
-    conn: null | {
-      client: MongoClient
-      db: Db
-    }
-    promise: null | Promise<{
-      client: MongoClient
-      db: Db
-    }>
+  mongo?: {
+    db: Db
+    client: MongoClient
   }
 }
 
@@ -35,41 +25,18 @@ type CustomGlobal = typeof global & {
  */
 let cached = (global as CustomGlobal).mongo
 
-if (!cached) {
-  cached = (global as CustomGlobal).mongo
-    ? (global as CustomGlobal).mongo
-    : { conn: null, promise: null }
-}
+async function connectToDatabase(): Promise<CustomGlobal['mongo']> {
+  if (!cached) {
+    const client = new MongoClient(MONGODB_URI)
+    await client.connect()
 
-async function connectToDatabase(): Promise<{
-  client: MongoClient
-  db: Db
-}> {
-  if (cached.conn) {
-    return cached.conn
-  }
-
-  if (!cached.promise) {
-    const opts = {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+    cached = {
+      client,
+      db: client.db(MONGODB_DB),
     }
-
-    const cachedPromise = MongoClient.connect(MONGODB_URI, opts).then(
-      client => {
-        return {
-          client,
-          db: client.db(MONGODB_DB),
-        }
-      },
-    )
-
-    cached.promise = cachedPromise
   }
 
-  cached.conn = await cached.promise
-
-  return cached.conn
+  return cached
 }
 
 export default connectToDatabase

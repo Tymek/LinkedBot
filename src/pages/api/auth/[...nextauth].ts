@@ -1,4 +1,5 @@
-import NextAuth from 'next-auth'
+import NextAuth, { Session } from 'next-auth'
+import { Awaitable } from 'next-auth/internals/utils'
 import Providers from 'next-auth/providers'
 
 export default NextAuth({
@@ -45,7 +46,7 @@ export default NextAuth({
       return Promise.resolve({
         ...session,
         user: { ...session.user, id: token?.id || token?.sub },
-      }) as any
+      }) as Awaitable<Session>
     },
   },
 })

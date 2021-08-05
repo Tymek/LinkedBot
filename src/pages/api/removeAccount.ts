@@ -7,7 +7,15 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> => {
+  if (req.method !== 'POST') {
+    res.status(405)
+    res.json({ error: 'Method Not Allowed' })
+
+    return
+  }
+
   const session = await getSession({ req })
+
   if (!session?.user?.id) {
     res.status(401)
     res.json({ error: 'Unauthorized' })
@@ -19,17 +27,14 @@ const handler = async (
 
   try {
     const { db } = await connectToDatabase()
-    const user = await db.collection('users').findOne({
+    await db.collection('users').deleteMany({
       _id: userId,
     })
-    const accounts = await db
-      .collection('accounts')
-      .find({
-        userId,
-      })
-      .toArray()
+    await db.collection('accounts').deleteMany({
+      userId,
+    })
 
-    res.json({ session, user, accounts })
+    res.json({ status: 'success' })
   } catch (error) {
     res.status(500)
     console.log(error) // eslint-disable-line no-console

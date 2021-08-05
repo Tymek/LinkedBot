@@ -31,3 +31,5 @@ yarn-error.log*
 
 # custom
 .vscode/settings.json
+/tmp
+/.tmp

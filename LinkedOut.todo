@@ -1,0 +1,4 @@
+https://api.github.com/users/${user}/events/public
+
+https://api.github.com/users/Tymek/events/public
+https://api.github.com/users/Tymek/starred
