@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
 import { signOut, useSession } from 'next-auth/client'
 
+// import Icon from './Icon'
+
 const LinkedInAccount: FC = () => {
   const [session] = useSession()
 
@@ -32,6 +34,10 @@ const LinkedInAccount: FC = () => {
           </div>
         </div>
       </div>
+      {/* TODO: <p className="uk-text-warning">
+        <Icon name="warning" ratio={1} /> Token TTL is 2 months. You will need
+        to re-authorize.
+      </p> */}
     </div>
   )
 }

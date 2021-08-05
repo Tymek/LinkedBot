@@ -29,12 +29,12 @@ const Home: FC<{ isConnected: boolean }> = ({ isConnected }) => {
       <main className="uk-margin-top">
         {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
         <h1 className="uk-heading-large">LinkedBot</h1>
-        <p>Automagically publish your GitHub activity to LinkedIn.</p>
+        <p>Automagically publish your GitHub stars activity to LinkedIn.</p>
         {loading ? (
           <span data-uk-spinner="" />
         ) : (
           <>
-            <div className="uk-margin-large-bottom">
+            <div className="uk-margin-medium-bottom">
               {session && linkedinAccount ? (
                 <LinkedInAccount />
               ) : (
@@ -67,10 +67,6 @@ const Home: FC<{ isConnected: boolean }> = ({ isConnected }) => {
           </>
         )}
 
-        {/* <p className="uk-text-warning">
-          <Icon name="warning" ratio={1} /> Token TTL is 2 months. You will need
-          to re-authorize.
-        </p> */}
         <br />
         <hr />
 

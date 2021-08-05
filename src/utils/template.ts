@@ -1,10 +1,21 @@
-const template = `
-@{{user}} 🌟 starred {{name}} on GitHub!
-It now has: 👁️ {{watchers}} watchers  ⭐ {{stars}} stars  and 🖇️ {{forks}} forks
-{{url}}
+const template = ({
+  user,
+  name,
+  watchers,
+  stars,
+  forks,
+}: {
+  user: string
+  name: string
+  watchers: number
+  stars: number
+  forks: number
+}): string => `@${user} 🌟 starred ${name} on GitHub!
+It now has: 👁️ ${watchers} watchers  ⭐ ${stars} stars  and 🖇️ ${forks} forks
+https://github.com/${name}
 
-Follow me on {{profile}}.
-<[ posted with github.com/Tymek/LinkedBot ]>
+Follow activity on https://github.com/${user}
+<[ 🤖 posted with github.com/Tymek/LinkedBot ]>
 `
 
 export default template
@@ -13,5 +24,5 @@ export default template
 // It now has: 👁️ 20 watchers ⭐ 595 stars and 🖇️ 207 forks
 // Repository: https://github.com/adr/madr
 
-// Follow me on https://github.com/Tymek.
-// <[ posted with LinkedBot github.com/Tymek/LinkedBot ]>
+// Follow activity on https://github.com/Tymek.
+// <[ posted with github.com/Tymek/LinkedBot ]>
