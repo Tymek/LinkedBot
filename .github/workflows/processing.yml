@@ -2,6 +2,7 @@ name: Process activity
 on:
   schedule:
     - cron: '3 */3 * * *'
+  workflow_dispatch: {}
 
 jobs:
   cron:

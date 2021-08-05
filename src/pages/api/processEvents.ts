@@ -51,7 +51,6 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> => {
-  // TODO: verify access?
   const start = new Date()
   const data = []
   const log = (message: string) => {
@@ -59,6 +58,10 @@ const handler = async (
   }
 
   try {
+    if (req.headers.authorization !== `Bearer ${process.env.CRON_SECRET}`) {
+      log('Unauthorized')
+      throw new Error('403')
+    }
     const { db } = await connectToDatabase()
     log(`timestamp: ${start.toISOString()}`)
 
