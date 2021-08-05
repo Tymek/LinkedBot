@@ -1,6 +1,6 @@
 # LinkedBot
 
-Automagically publish your GitHub activity to LinkedIn.
+Automagically publish your GitHub stars activity to LinkedIn.
 
 Built on https://github.com/vercel/next.js/tree/canary/examples/with-mongodb template.
 
@@ -22,3 +22,10 @@ GitHub doesn't allow multiple callback URLs per application, so you will need on
 yarn install
 yarn dev
 ```
+
+### Configure GitHub Actions
+
+In order to enable automatic processing of activity, set following secrets in GitHub:
+
+- `DEPLOYMENT_URL` - for example `https://linkedbot.vercel.app`
+- `CRON_SECRET` - to the same value as in Vercel / deployment env

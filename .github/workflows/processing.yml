@@ -1,0 +1,17 @@
+name: Process activity
+on:
+  schedule:
+    - cron: '3 */3 * * *'
+
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run CRON
+        run: |
+          curl --request POST \
+          --url '${{ secrets.DEPLOYMENT_URL }}/api/processEvents' \
+          --header 'Authorization: Bearer ${{ secrets.CRON_SECRET }}' && \
+          curl --request POST \
+          --url '${{ secrets.DEPLOYMENT_URL }}/api/processPosting' \
+          --header 'Authorization: Bearer ${{ secrets.CRON_SECRET }}'
